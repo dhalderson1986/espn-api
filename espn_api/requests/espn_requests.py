@@ -18,17 +18,15 @@ class ESPNUnknownError(Exception):
 
 
 class EspnFantasyRequests(object):
-    def __init__(self, sport: str, year: int, league_id: int, cookies: dict = None, logger: Logger = None):
-        if sport not in FANTASY_SPORTS:
-            raise Exception(f'Unknown sport: {sport}, available options are {FANTASY_SPORTS.keys()}')
+    def __init__(self, year: int, league_id: int, cookies: dict = None, logger: Logger = None):
         self.year = year
         self.league_id = league_id
-        self.ENDPOINT = FANTASY_BASE_ENDPOINT + FANTASY_SPORTS[sport] + '/seasons/' + str(self.year)
-        self.NEWS_ENDPOINT = NEWS_BASE_ENDPOINT + FANTASY_SPORTS[sport] + '/news/' + 'players'
+        self.ENDPOINT = FANTASY_BASE_ENDPOINT + FANTASY_SPORTS['nba'] + '/seasons/' + str(self.year)
+        self.NEWS_ENDPOINT = NEWS_BASE_ENDPOINT + FANTASY_SPORTS['nba'] + '/news/' + 'players'
         self.cookies = cookies
         self.logger = logger
 
-        self.LEAGUE_ENDPOINT = FANTASY_BASE_ENDPOINT + FANTASY_SPORTS[sport]
+        self.LEAGUE_ENDPOINT = FANTASY_BASE_ENDPOINT + FANTASY_SPORTS['nba']
         # older season data is stored at a different endpoint
         if year < 2018:
             self.LEAGUE_ENDPOINT += "/leagueHistory/" + str(league_id) + "?seasonId=" + str(year)

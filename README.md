@@ -2,8 +2,8 @@
 ![](https://github.com/cwendt94/espn-api/workflows/Espn%20API%20Integration%20Test/badge.svg) [![codecov](https://codecov.io/gh/cwendt94/espn-api/branch/master/graphs/badge.svg)](https://codecov.io/gh/cwendt94/espn-api) [![Join the chat at https://gitter.im/ff-espn-api/community](https://badges.gitter.im/ff-espn-api/community.svg)](https://gitter.im/ff-espn-api/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![PyPI version](https://badge.fury.io/py/espn-api.svg)](https://badge.fury.io/py/espn-api)<a target="_blank" href="https://www.python.org/downloads/" title="Python version"><img src="https://img.shields.io/badge/python-%3E=_3.8-teal.svg"></a>
 
 
-## ESPN API
-This package uses ESPN's Fantasy API to extract data from any public or private league for **Fantasy Football and Basketball (NHL, MLB, and WNBA are in development)**.  
+## ESPN Basketball API
+This package uses ESPN's Fantasy API to extract data from any public or private league for **Fantasy Basketball only**.  
 Please feel free to make suggestions, bug reports, and pull request for features or fixes!
 
 This package was inspired and based off of [rbarton65/espnff](https://github.com/rbarton65/espnff).
@@ -49,18 +49,26 @@ pytest
 
 
 ## Usage
-### [For Getting Started and API details head over to the Wiki!](https://github.com/cwendt94/espn-api/wiki)
+### Getting Started
+
 ```python
-# Football API
-from espn_api.football import League
-# Basketball API
 from espn_api.basketball import League
-# Hockey API
-from espn_api.hockey import League
-# Baseball API
-from espn_api.baseball import League
 # Init
 league = League(league_id=222, year=2019)
+```
+
+## Contributor Note
+
+Internally, the basketball package uses the following basketball-specific classes for maintainability and clarity:
+
+- `BasketballLeague` (see `espn_api/basketball_league.py`)
+- `BasketballSettings` (see `espn_api/base_settings.py`)
+- `BasketballPick` (see `espn_api/base_pick.py`)
+
+End users should continue to use the public API:
+
+```python
+from espn_api.basketball import League
 ```
 
 
@@ -71,7 +79,7 @@ If you have any questions about the package, ESPN API data, or want to talk abou
 ## Issue Reporting
 If you find a bug follow the steps below for reporting.
 
-1. Open a [new issue](https://github.com/cwendt94/espn-api/issues) with a brief description of the bug for the title. In the title also add which sport (Football or Basketball)
+1. Open a [new issue](https://github.com/cwendt94/espn-api/issues) with a brief description of the bug for the title. In the title also add Basketball
 
 2. Run the application in debug mode to view ESPN API request's and response's
     ```python

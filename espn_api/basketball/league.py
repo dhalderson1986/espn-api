@@ -1,7 +1,7 @@
 import json
 from typing import List, Set, Union
 
-from ..base_league import BaseLeague
+from ..basketball_league import BasketballLeague
 from .team import Team
 from .player import Player
 from .matchup import Matchup
@@ -10,11 +10,11 @@ from .activity import Activity
 from .transaction import Transaction
 from .constant import POSITION_MAP, ACTIVITY_MAP, TRANSACTION_TYPES
 
-class League(BaseLeague):
+class League(BasketballLeague):
     teams: List[Team]
     '''Creates a League instance for Public/Private ESPN league'''
     def __init__(self, league_id: int, year: int, espn_s2=None, swid=None, fetch_league=True, debug=False):
-        super().__init__(league_id=league_id, year=year, sport='nba', espn_s2=espn_s2, swid=swid, debug=debug)
+        super().__init__(league_id=league_id, year=year, espn_s2=espn_s2, swid=swid, debug=debug)
 
         if fetch_league:
             self.fetch_league()

@@ -10,9 +10,6 @@ class Matchup(object):
             self.away_team_live_score) = self._fetch_matchup_info(data, 'away')
 
     def __repr__(self):
-        # TODO: use final score when that's available?
-        # writing this too early to see if data['home']['totalPoints'] is final score
-        # it might also be used for points leagues instead of category leagues
         if not self.away_team_live_score:
             return f'Matchup({self.home_team}, {self.away_team})'
         else:

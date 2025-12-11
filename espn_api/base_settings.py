@@ -1,4 +1,4 @@
-class BaseSettings(object):
+class BasketballSettings(object):
     '''Creates Settings object'''
     def __init__(self, data):
         self.reg_season_count = data['scheduleSettings']['matchupPeriodCount']
@@ -23,4 +23,4 @@ class BaseSettings(object):
         for division in divisions: self.division_map[division.get('id', 0)] = division.get('name')
 
     def __repr__(self):
-        return f'Settings({self.name})'
+        return f'BasketballSettings({self.name})'
